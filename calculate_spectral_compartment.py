@@ -36,9 +36,11 @@ def calculate_spectral_compartment(hic, res, chromsize, track):
 
     # chromosome binning using pybedtools
     # w: res, s: res
+
+    # sort_values will disrupt the order of chromosomes.
     chrom_bin = pb.BedTool().window_maker(
         g=chromsize, w=res, s=res
-    ).to_dataframe().sort_values(by=['chrom', 'start', 'end'])
+    ).to_dataframe()
 
     matrix_size = chrom_bin.shape[0]
     # add offset of chromosome 1
