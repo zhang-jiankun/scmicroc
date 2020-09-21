@@ -11,7 +11,7 @@ import click
 import numpy as np
 import pandas as pd
 import scipy.sparse as sp
-from scipy.sparse.linalg import eigs
+from scipy.sparse.linalg import eigsh
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 import straw
@@ -82,7 +82,7 @@ def calculate_spectral_compartment(hic, res, chromsize, track):
     hic_matrix_full = hic_matrix_full[:, s>0]
 
     Lap = Laplacian(hic_matrix_full)
-    vals, vecs = eigs(Lap, k = 100)
+    vals, vecs = eigsh(Lap, k = 100)
     vecs = np.real_if_close(vecs)
     vals = np.real_if_close(vals)
 
