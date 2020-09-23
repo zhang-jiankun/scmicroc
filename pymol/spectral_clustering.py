@@ -1,3 +1,4 @@
+bg_color white
 clip slab, 10
 set ray_shadows,0
 set specular, off
